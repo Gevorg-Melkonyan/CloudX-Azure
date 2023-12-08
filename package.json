@@ -8,6 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "build-auto-deploy-azure": "npm run build && npm run deploy-to-azure",
+    "deploy-to-azure": "powershell az storage blob upload-batch -s './dist/app' -d '$web' --account-name 'm2stgsandfrontendne' --overwrite",
     "prepare": "husky install",
     "lint:format": "npx --no-install lint-staged && npx --no-install pretty-quick --staged"
   },
