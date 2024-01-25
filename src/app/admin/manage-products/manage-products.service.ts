@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { EMPTY, Observable } from 'rxjs';
 import { ApiService } from '../../core/api.service';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap } from "rxjs/operators";
 
 @Injectable()
 export class ManageProductsService extends ApiService {
@@ -23,6 +23,7 @@ export class ManageProductsService extends ApiService {
           headers: {
             // eslint-disable-next-line @typescript-eslint/naming-convention
             'Content-Type': 'text/csv',
+            'x-ms-blob-type': 'Blockblob',
           },
         })
       )
@@ -32,10 +33,12 @@ export class ManageProductsService extends ApiService {
   private getPreSignedUrl(fileName: string): Observable<string> {
     const url = this.getUrl('import', 'import');
 
-    return this.http.get<string>(url, {
+    return this.http.get<any>(url, {
       params: {
         name: fileName,
       },
-    });
+    }).pipe(
+      map((data) => data.url)
+    );
   }
 }
