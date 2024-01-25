@@ -9,7 +9,8 @@ export const environment: Config = {
   apiEndpoints: {
     product: 'https://.execute-api.eu-west-1.amazonaws.com/dev',
     order: 'https://.execute-api.eu-west-1.amazonaws.com/dev',
-    import: 'https://.execute-api.eu-west-1.amazonaws.com/dev',
+    import: 'https://fa-imports-service-ne-555.azurewebsites.net/api',
+    // import: 'http://localhost:7071/api',
     // bff: 'http://localhost:7071/api',
     bff: 'https://fa-products-service-ne-0017.azurewebsites.net/api',
     cart: 'https://.execute-api.eu-west-1.amazonaws.com/dev',
@@ -17,7 +18,7 @@ export const environment: Config = {
   apiEndpointsEnabled: {
     product: false,
     order: false,
-    import: false,
+    import: true,
     bff: true,
     cart: false,
   },
